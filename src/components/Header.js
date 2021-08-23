@@ -10,6 +10,11 @@ import StoreIcon from '@material-ui/icons/Store';
 import Button from '@material-ui/core/Button';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core';
+import Badge from '@material-ui/core/Badge';
+import { withStyles } from '@material-ui/core/styles';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,14 +26,21 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
-
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
 
 function Header(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} >
-      <AppBar position="static" >
+    <div className={classes.root}  >
+      <AppBar position="static">
         <Toolbar variant="dense">
           <IconButton edge="start"  color="inherit" >
             <StoreIcon />
@@ -36,9 +48,11 @@ function Header(props) {
           <Typography variant="h6" color="inherit">
             Store Front
           </Typography>
-          <IconButton color="inherit" style={{position:'absolute', right:'0'}} onClick={()=>{props.show()}}>
-          <ShoppingCartIcon />({props.cart.length})
-            </IconButton>
+          <IconButton color="inherit" style={{position:'absolute', right:'20px'}} onClick={()=>{props.show()}}>
+          <StyledBadge badgeContent={props.cart.length} color="secondary">
+          <ShoppingCartIcon />
+          </StyledBadge>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

@@ -13,6 +13,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
+import { useSnackbar } from 'notistack';
 // function Products(props) {
 //     return (
 //         <div>
@@ -49,18 +51,18 @@ const useStyles = makeStyles({
 
 function Products(props) {
     const classes = useStyles();
-
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     function handleClick(element){
         props.addToCart(element);
         props.reduceInventory(element);
         props.getCategoryItems(props.category.name);
-
+        enqueueSnackbar('added to cart ');
     }
 
     return (
         <div style={{display:'flex',justifyContent:'space-evenly', marginTop:'50px'}}>
             {props.products.activeProducts.map(element=>{
-            return <Card elevation={3} className={classes.root} style={{display:"inline-block", width:'20%',borderRadius:'10px'}}>
+            return <Card elevation={3} className={classes.root} style={{display:"inline-block", width:'20%',borderRadius:'10px', backgroundColor:'white'}}>
                   <CardMedia 
                     className={classes.media}
                     image={element.image}
@@ -80,7 +82,7 @@ function Products(props) {
                 </CardContent>
                 </CardActionArea>
                 <CardActions>
-                        <Button size="small" color="primary" onClick={()=>{handleClick(element)}}>
+                        <Button size="small" color="primary" onClick={()=>{handleClick(element) }}>
                             Add To Cart
                         </Button>
                     </CardActions>
@@ -104,3 +106,5 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
+
+

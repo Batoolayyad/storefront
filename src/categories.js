@@ -13,15 +13,15 @@ export default function categoriesReducer(state=initialState,action){
     const {payload,type} = action;
     switch(type){
         case 'CHANGE_ACTIVE':
-            let change={};
+            let changeActiveCategory={};
             state.categoriesList.forEach(item=>{
                 if(item.name === payload){
-                    change=item;
+                    changeActiveCategory=item;
                 }
             });
             return {
                 categoriesList: state.categoriesList,
-                activeCategory:change
+                activeCategory:changeActiveCategory
             };
         default:
             return state;

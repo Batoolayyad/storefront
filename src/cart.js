@@ -8,8 +8,11 @@ export default function cartReducer(state=initialstate,action){
             // default: return state;
             if(payload.inventoryCount!==0){
                 return [...state,payload];
-            }else{return state}
-        default: return state;
+            }
+            else{
+                return state
+            }
+        default:return state;
     }
 }
 
