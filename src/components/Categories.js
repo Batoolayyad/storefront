@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { changeActive } from '../categories';
-import { getCategoryItems } from '../products';
+// import { getCategoryItems } from '../products';
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,6 +32,7 @@ import Tab from '@material-ui/core/Tab';
 
 
 
+
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
@@ -49,11 +50,12 @@ function Categories(props) {
 
     return (
         <>
-        <Paper className={classes.root}>
+
+        <Paper  className={classes.root}>
             <Tabs
                 value={value}
                 onChange={handleChange}
-                indicatorColor="primary"
+                indicatorColor="secondary"
                 textColor="primary"
                 centered
                 >
@@ -62,10 +64,9 @@ function Categories(props) {
                 })}
             </Tabs>
         </Paper>
-                <div style={{margin:"15px"}}>
-                <h2 >{props.activeCategory.name} </h2>
-                <h4 >{props.activeCategory.description} </h4>
-
+                <div style={{display:"flex", justifyContent:'center',marginTop:'30px'}}>
+                <h1 style={{marginRight:'5px', color:'rgb(0, 112, 153)'}} >{props.activeCategory.name} </h1>
+                <h4 style={{color:'rgb(148, 184, 184)'}}> {props.activeCategory.description} </h4>
                 </div>
         </>
     );
@@ -77,7 +78,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = {
     changeActive,
-    getCategoryItems
+    // getCategoryItems
 }
 
 

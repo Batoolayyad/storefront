@@ -23,13 +23,13 @@ export default function DenseAppBar() {
     <div className={classes.root} style={{position:'absolute', bottom:'0',width:"100%", paddingLeft:'20px'}}>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit">
+          <Typography variant="h6" color="inherit" style={{fontSize:'15px'}}>
            &copy;Batool 2021
           </Typography>
           <div style={{margin:'auto'}}>
-            <PinDropIcon style={{padding:'10px'}} />
-            <ContactMailIcon style={{padding:'10px'}}/>
-            <PhoneIcon style={{padding:'10px'}}/>
+            <PinDropIcon style={{padding:'10px 0 0 10px'}} /> Amman
+            <ContactMailIcon style={{padding:'10px 0 0 10px'}}/> batool@gmail.com
+            <PhoneIcon style={{padding:'10px 0 0 10px'}}/> 079-999-999-999
           </div>
         </Toolbar>
       </AppBar>
