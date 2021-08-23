@@ -39,12 +39,12 @@ function App() {
         <SnackbarProvider maxSnack={3}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'right',
+          horizontal: 'left',
           contrastText:"rgb(0, 0, 0)"
           
         }}
         TransitionComponent={Collapse}
-        style={{backgroundColor:"rgb(255,204,128)" ,color:'black', marginTop:"30px"}}
+        style={{backgroundColor:"rgb(255,204,128)" ,color:'black', marginTop:"25px"}}
       >
           <Header show={handleShow} />
           <Categories />
