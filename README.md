@@ -62,8 +62,8 @@ For phase 2, we are now adding the following requirements:
 
 
 ## Links:
-- PR: https://github.com/Batoolayyad/storefront/pull/3
-- codesandbox: https://codesandbox.io/s/nice-wind-dz2l2
+- PR: https://github.com/Batoolayyad/storefront/pull/3 , https://github.com/Batoolayyad/storefront/pull/5
+- codesandbox: https://codesandbox.io/s/zealous-dhawan-06nzm
 
 
 
