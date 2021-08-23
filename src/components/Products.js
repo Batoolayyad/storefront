@@ -1,11 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import {getCategoryItems} from '../products';
+import { addToCart } from '../cart';
+import {reduceInventory} from '../products';
 
+
+import { CardActionArea,CardActions } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -47,26 +49,41 @@ const useStyles = makeStyles({
 
 function Products(props) {
     const classes = useStyles();
+
+    function handleClick(element){
+        props.addToCart(element);
+        props.reduceInventory(element);
+        props.getCategoryItems(props.category.name);
+
+    }
+
     return (
         <div style={{display:'flex',justifyContent:'space-evenly', marginTop:'50px'}}>
-            {props.activeProducts.map(element=>{
+            {props.products.activeProducts.map(element=>{
             return <Card elevation={3} className={classes.root} style={{display:"inline-block", width:'20%',borderRadius:'10px'}}>
                   <CardMedia 
                     className={classes.media}
                     image={element.image}
                     title="Contemplative Reptile"
                 />
+                 <CardActionArea>
                 <CardContent >
                     <Typography  gutterBottom variant="h5" component="h2">
                         {element.name}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body1" color="textSecondary" component="p">
                        {element.description}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                        {element.price}
                     </Typography>
                 </CardContent>
+                </CardActionArea>
+                <CardActions>
+                        <Button size="small" color="primary" onClick={()=>{handleClick(element)}}>
+                            Add To Cart
+                        </Button>
+                    </CardActions>
             </Card>
 
             })}
@@ -74,10 +91,16 @@ function Products(props) {
     )
 }
 function mapStateToProps(state) {
-    return state.products;
+    return {
+        category:state.categoriesList.activeCategory,
+        products: state.products,
+        cartProducts: state.cart
+    };
 }
 const mapDispatchToProps = {
     getCategoryItems,
+    addToCart,
+    reduceInventory,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
