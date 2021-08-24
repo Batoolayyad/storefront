@@ -6,7 +6,7 @@ export default function cartReducer(state=initialstate,action){
         case'ADD_TO_CART':
             // return [...state,payload];
             // default: return state;
-            if(payload.inventoryCount!==0){
+            if(payload.inStock!==0){
                 return [...state,payload];
             }
             else{
