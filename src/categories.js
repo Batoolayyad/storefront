@@ -3,10 +3,10 @@
 
 const initialState ={
     categoriesList:[
-      {name:'Electronics',description:'multiple choice of the best Electronics brands'},
-      {name:'Food',description:'the best types of food from our farms directly to your kitchen'}
+      {name:'electronics',description:'multiple choice of the best Electronics brands'},
+      {name:'food',description:'the best types of food from our farms directly to your kitchen'}
     ],
-    activeCategory:{},
+    activeCategory:{name:'electronics',description:'multiple choice of the best Electronics brands'},
 }
 
 export default function categoriesReducer(state=initialState,action){

@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { changeActive } from '../categories';
 // import { getCategoryItems } from '../products';
-
+import { loadProducts } from '../thunk';
+import { useDispatch,useSelector } from 'react-redux';
+import { getRemoteData } from '../thunk';
+import { useEffect } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -41,12 +44,24 @@ const useStyles = makeStyles({
 
 
 function Categories(props) {
+    const dispatch = useDispatch();
+    const state = useSelector(state => state.categoriesList);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
-    };
+      };
+  
+
+
+useEffect(()=>{
+    // props.changeActive("electronics");
+    dispatch(getRemoteData()).then(()=>{
+        dispatch(changeActive("electronics"));
+    });
+},[])
 
     return (
         <>
@@ -59,27 +74,27 @@ function Categories(props) {
                 textColor="primary"
                 centered
                 >
-                {props.categoriesList.map((element)=>{
-                    return <Tab key={element.name} label={element.name} onClick={() => { props.changeActive(element.name) }} />
+                {state.categoriesList.map((element)=>{
+                    return <Tab key={element.name} label={element.name} onClick={() => { dispatch(changeActive(element.name)) }} />
                 })}
             </Tabs>
         </Paper>
                 <div style={{display:"flex", justifyContent:'center',marginTop:'30px'}}>
-                <h1 style={{marginRight:'5px', color:'rgb(0, 112, 153)'}} >{props.activeCategory.name} </h1>
-                <h4 style={{color:'rgb(148, 184, 184)'}}> {props.activeCategory.description} </h4>
+                <h1 style={{marginRight:'5px', color:'rgb(0, 112, 153)'}} >{state.activeCategory.name} </h1>
+                <h4 style={{color:'rgb(148, 184, 184)'}}> {state.activeCategory.description} </h4>
                 </div>
         </>
     );
 }
 
 
-const mapStateToProps = (state) => {
-    return state.categoriesList;
-}
-const mapDispatchToProps = {
-    changeActive,
-    // getCategoryItems
-}
+// const mapStateToProps = (state) => {
+//     return state.categoriesList;
+// }
+// const mapDispatchToProps = {
+//     changeActive,
+//     // getCategoryItems
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default Categories;

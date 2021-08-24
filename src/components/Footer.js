@@ -20,7 +20,7 @@ export default function DenseAppBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} style={{position:'absolute', bottom:'0',width:"100%", paddingLeft:'20px'}}>
+    <div className={classes.root} style={{marginTop:'30px'}}>
       <AppBar position="static">
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit" style={{fontSize:'15px'}}>

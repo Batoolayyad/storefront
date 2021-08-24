@@ -60,12 +60,12 @@ function Products(props) {
     }
 
     return (
-        <div style={{display:'flex',justifyContent:'space-evenly', marginTop:'50px'}}>
+        <div>
             {props.products.activeProducts.map(element=>{
-            return <Card elevation={3} className={classes.root} style={{display:"inline-block", width:'20%',borderRadius:'10px', backgroundColor:'white'}}>
+            return <Card elevation={3} className={classes.root} style={{display:"inline-block",marginLeft:'30px',marginTop:'30px', width:'18%',borderRadius:'10px', backgroundColor:'white'}}>
                   <CardMedia 
                     className={classes.media}
-                    image={element.image}
+                    image={`https://source.unsplash.com/random?${element.name}`}
                     title="Contemplative Reptile"
                 />
                  <CardActionArea>
@@ -74,10 +74,10 @@ function Products(props) {
                         {element.name}
                     </Typography>
                     <Typography variant="body1" color="textSecondary" component="p">
-                       {element.description}
+                    price: {element.price} $
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                       {element.price}
+                    quantity: {element.inStock}
                     </Typography>
                 </CardContent>
                 </CardActionArea>

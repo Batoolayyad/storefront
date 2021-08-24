@@ -47,7 +47,7 @@ function Cart(props) {
             return list;
     }
     return (
-        <div className={classes.root} style={{ float:'right', width:'13%', marginRight:'10px', marginTop:'30px', borderRadius:'5px',border:'2px solid rgb(204,204,204)', boxShadow: '8px 8px 2px 1px rgba(0, 0, 255, .2)'}}>
+        <div className={classes.root} style={{ float:'right', width:'15%', marginTop:'15px',marginRight:'20px', borderRadius:'5px',border:'2px solid rgb(204,204,204)', boxShadow: '8px 8px 2px 1px rgba(0, 0, 255, .2)'}}>
             <List component="nav" aria-label="secondary mailbox folders">
                 <h3 style={{color:'rgb(0, 112, 153)', marginLeft:'5px'}}>Purchases:</h3>
                 <h4>{handleList()}</h4>

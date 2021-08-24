@@ -44,7 +44,7 @@ function App() {
           
         }}
         TransitionComponent={Collapse}
-        style={{backgroundColor:"rgb(255,204,128)" ,color:'black', marginTop:"25px"}}
+        style={{backgroundColor:"rgba(255, 204, 128, 0.747) " ,color:'black', marginTop:"25px"}}
       >
           <Header show={handleShow} />
           <Categories />
